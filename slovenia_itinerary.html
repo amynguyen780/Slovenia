@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slovenia · May 25–29, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F7F4EE;
+    --cream-dark: #EDE9DF;
+    --ink: #1A1814;
+    --ink-mid: #4A4640;
+    --ink-light: #8A8580;
+    --ink-faint: #C5C0B8;
+    --green: #2D5A3D;
+    --green-light: #EAF0EC;
+    --amber: #8B5E2A;
+    --amber-light: #F5ECD8;
+    --purple: #4A3870;
+    --purple-light: #EEEAF5;
+    --coral: #8B3A2A;
+    --coral-light: #F5EAE8;
+    --teal: #1A5C5A;
+    --teal-light: #E4F0EF;
+    --border: rgba(26,24,20,0.12);
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  .site-header {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px);
+  }
+  .header-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(247,244,238,0.5);
+    margin-bottom: 0.75rem;
+  }
+  .header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+  .header-title em { font-style: italic; color: rgba(247,244,238,0.65); }
+  .header-sub {
+    font-size: 13px;
+    color: rgba(247,244,238,0.45);
+    font-weight: 300;
+    margin-top: 1rem;
+    letter-spacing: 0.04em;
+  }
+  .anchor-pill {
+    display: inline-block;
+    margin-top: 1.25rem;
+    background: rgba(247,244,238,0.1);
+    border: 0.5px solid rgba(247,244,238,0.25);
+    border-radius: 30px;
+    padding: 6px 16px;
+    font-size: 12px;
+    color: rgba(247,244,238,0.7);
+    letter-spacing: 0.03em;
+  }
+  .anchor-pill strong { color: rgba(247,244,238,0.95); font-weight: 500; }
+
+  .nav-bar {
+    background: var(--ink);
+    border-bottom: 1px solid rgba(247,244,238,0.1);
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-tab {
+    padding: 14px 24px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(247,244,238,0.4);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    user-select: none;
+  }
+  .nav-tab:hover { color: rgba(247,244,238,0.7); }
+  .nav-tab.active { color: var(--cream); border-bottom-color: var(--cream); }
+
+  .main { max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .day-card {
+    background: white;
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .day-card:hover { box-shadow: 0 4px 24px rgba(26,24,20,0.07); }
+
+  .day-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 16px 22px;
+    border-bottom: 0.5px solid var(--border);
+    flex-wrap: wrap;
+    cursor: pointer;
+    user-select: none;
+  }
+  .day-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--ink-faint);
+    line-height: 1;
+    min-width: 36px;
+  }
+  .day-info { flex: 1; }
+  .day-date {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 2px;
+  }
+  .day-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .sleep-tag {
+    font-size: 11px;
+    color: var(--green);
+    background: var(--green-light);
+    border: 0.5px solid rgba(45,90,61,0.2);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .chevron {
+    font-size: 12px;
+    color: var(--ink-faint);
+    transition: transform 0.25s;
+    margin-left: 4px;
+  }
+  .day-card.collapsed .chevron { transform: rotate(-90deg); }
+
+  .day-body { padding: 20px 22px; }
+  .day-card.collapsed .day-body { display: none; }
+
+  .block {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .block:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+  .time-col {
+    min-width: 72px;
+    font-size: 11px;
+    color: var(--ink-light);
+    padding-top: 3px;
+    letter-spacing: 0.02em;
+    flex-shrink: 0;
+  }
+  .content-col { flex: 1; min-width: 0; }
+  .block-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    line-height: 1.3;
+  }
+  .block-desc {
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+  }
+  .b-star { background: var(--amber-light); color: var(--amber); }
+  .b-jake { background: var(--green-light); color: var(--green); }
+  .b-michelle { background: var(--teal-light); color: var(--teal); }
+  .b-wine { background: var(--purple-light); color: var(--purple); }
+  .b-must { background: var(--coral-light); color: var(--coral); }
+
+  .note {
+    background: var(--cream);
+    border-left: 2px solid var(--ink-faint);
+    border-radius: 0 6px 6px 0;
+    padding: 9px 13px;
+    font-size: 12px;
+    color: var(--ink-mid);
+    line-height: 1.55;
+    margin-top: 9px;
+    font-weight: 300;
+  }
+  .note strong { font-weight: 500; color: var(--ink); }
+
+  .drive {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--ink-light);
+    background: var(--cream-dark);
+    border-radius: 20px;
+    padding: 2px 9px;
+    margin-top: 5px;
+    font-weight: 300;
+  }
+  .drive::before { content: '→'; font-size: 10px; }
+
+  .legend {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    padding: 14px 18px;
+    background: white;
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--ink-mid);
+    font-weight: 300;
+  }
+
+  .section-card {
+    background: white;
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 1.25rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .section-body {
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .section-body strong { font-weight: 500; color: var(--ink); }
+  .section-body p + p { margin-top: 10px; }
+
+  .cuts-row {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 0.5px solid var(--border);
+    font-size: 13px;
+  }
+  .cuts-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .cuts-region {
+    min-width: 110px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+  .cuts-body { flex: 1; color: var(--ink-mid); line-height: 1.6; font-weight: 300; }
+  .cuts-body strong { font-weight: 500; color: var(--ink); }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 12px;
+    color: var(--ink-faint);
+    border-top: 0.5px solid var(--border);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-eyebrow">A trip itinerary</div>
+  <div class="header-title">Slovenia <em>in four days</em></div>
+  <div class="header-sub">May 25 – 29, 2026 &nbsp;·&nbsp; Three travellers &nbsp;·&nbsp; Rental car</div>
+  <div class="anchor-pill">★ Anchor booking: <strong>Hiša Franko lunch · Wednesday May 27</strong> — book this first</div>
+</header>
+
+<nav class="nav-bar">
+  <div class="nav-tab active" onclick="showTab('itinerary', this)">Itinerary</div>
+  <div class="nav-tab" onclick="showTab('decisions', this)">Key decisions</div>
+  <div class="nav-tab" onclick="showTab('cuts', this)">What didn't fit</div>
+</nav>
+
+<main class="main">
+
+  <div id="tab-itinerary" class="tab-panel active">
+
+    <div class="legend">
+      <div class="legend-item"><span class="badge b-star">★ michelin</span></div>
+      <div class="legend-item"><span class="badge b-jake">jake's rec</span></div>
+      <div class="legend-item"><span class="badge b-michelle">michelle's rec</span></div>
+      <div class="legend-item"><span class="badge b-wine">winery</span></div>
+      <div class="legend-item"><span class="badge b-must">high priority</span></div>
+    </div>
+
+    <div class="day-card" id="card1">
+      <div class="day-header" onclick="toggleCard('card1')">
+        <div class="day-num">1</div>
+        <div class="day-info">
+          <div class="day-date">Monday · May 25</div>
+          <div class="day-title">Arrive → Ljubljana</div>
+        </div>
+        <div class="sleep-tag">Sleep: Ljubljana</div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="day-body">
+        <div class="block">
+          <div class="time-col">1:25 pm</div>
+          <div class="content-col">
+            <div class="block-title">Land at LJU · pick up rental car</div>
+            <div class="block-desc">~20 min drive into the city center. Check in, drop bags.</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">~3 pm</div>
+          <div class="content-col">
+            <div class="block-title">Coffee at Cafe Čokl <span class="badge b-jake">jake's rec</span></div>
+            <div class="block-desc">Wake yourselves up after the flight. Slovenians are obsessed with coffee — start as you mean to go on.</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">~3:30 pm</div>
+          <div class="content-col">
+            <div class="block-title">Ljubljana old town walk <span class="badge b-must">high priority</span></div>
+            <div class="block-desc">Dragon Bridge → Triple Bridge → Central Market (Monday afternoon — likely winding down but worth a stroll) → Cooperative Business Bank Building (fairy-tale art nouveau, Slovenian tricolour facade) → Ljubljana Castle by funicular for panoramic views over the city.</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">~5:30 pm</div>
+          <div class="content-col">
+            <div class="block-title">Park Špica river loop</div>
+            <div class="block-desc">Walk from the city center down the Ljubljanica to Špica Park — there's a kayak racing course in the middle of the city. Cross at Prule Bridge, walk the other bank back. ~4 km, beautiful evening light on the river.</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">~7:30 pm</div>
+          <div class="content-col">
+            <div class="block-title">Dinner: TaBar <span class="badge b-jake">jake's rec</span> <span class="badge b-michelle">michelle's rec</span> <span class="badge b-must">high priority</span></div>
+            <div class="block-desc">Slovenian tapas in the old town, Ribji Trg square. Must-order: roast octopus with polenta. Sit outside. Recommended by both Jake and Michelle independently — a strong signal.</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">~10 pm</div>
+          <div class="content-col">
+            <div class="block-title">Drinks: :PROJEKT Beershop & Bar <span class="badge b-jake">jake's rec</span></div>
+            <div class="block-desc">Jake's pick. 5.0 stars on Maps with under 200 reviews — the kind of place locals love before tourists discover it. Craft beer focus.</div>
+            <div class="note">Alternative: Tozd by the river for craft beers in orange mugs and a library of books, or Vinoteka Movia for Slovenian orange wines in cosy dark interiors.</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">Late</div>
+          <div class="content-col">
+            <div class="block-title">Burek Olimpija (if hungry)</div>
+            <div class="block-desc">Open almost 24 hours. Cheese pastry is the order. Classic late-night Ljubljana move.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-card" id="card2">
+      <div class="day-header" onclick="toggleCard('card2')">
+        <div class="day-num">2</div>
+        <div class="day-info">
+          <div class="day-date">Tuesday · May 26</div>
+          <div class="day-title">Ljubljana → Soča Valley</div>
+        </div>
+        <div class="sleep-tag">Sleep: Kobarid/Bovec area</div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="day-body">
+        <div class="block">
+          <div class="time-col">Morning</div>
+          <div class="content-col">
+            <div class="block-title">Pekarna Ana breakfast <span class="badge b-must">high priority</span></div>
+            <div class="block-desc">Ana Roš's bakery — sourdough, cruffins, biscuits by the former head baker of Hiša Franko. The perfect send-off from Ljubljana before hitting the road.</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">~9 am</div>
+          <div class="content-col">
+            <div class="block-title">Drive to Zelenci Nature Reserve <span class="badge b-jake">jake's rec</span> <span class="badge b-must">high priority</span></div>
+            <div class="block-desc">Striking emerald-green springs where the Sava river begins — ethereally clear water over a white sandy bed. Short easy walk. A visual jaw-dropper that takes about 45 minutes total.</div>
+            <div class="drive">~1.5h from Ljubljana</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">~11:30 am</div>
+          <div class="content-col">
+            <div class="block-title">Arrive Kobarid · Kozjak Waterfall hike <span class="badge b-must">high priority</span></div>
+            <div class="block-desc">Easy ~1.5h return hike through a dramatic gorge along the turquoise Soča. The town itself carries Hemingway history — the 1917 Battle of Caporetto retreat he documented in A Farewell to Arms.</div>
+            <div class="drive">Zelenci → Kobarid ~45min</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">~2 pm</div>
+          <div class="content-col">
+            <div class="block-title">Late lunch: Topli Val <span class="badge b-must">high priority</span></div>
+            <div class="block-desc">45-year-old seafood institution in the heart of the Alps. Fish from Slovenian Adriatic fishermen, trout from local farms, game from local hunters. Three generations of the Hvala family. Sip Chardonnay on the terrace. Fish carpaccio is the standout.</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">Late afternoon</div>
+          <div class="content-col">
+            <div class="block-title">Drive the Soča Valley road <span class="badge b-jake">jake's rec</span> <span class="badge b-must">high priority</span></div>
+            <div class="block-desc">One of the most scenic drives in Europe — turquoise river through Alpine gorges. Stop at viewpoints. Bovec is ~30 min north if you want to swim in the Soča. Then settle in for the night.</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">Evening</div>
+          <div class="content-col">
+            <div class="block-title">Dinner: Hiša Polonka <span class="badge b-jake">jake's rec</span></div>
+            <div class="block-desc">Ana Roš's casual sister restaurant to Hiša Franko — same family, same philosophy, much more relaxed and affordable. A great way to ease into Ana Roš's world before the big lunch tomorrow. Right in Kobarid.</div>
+            <div class="note">Alternative if Polonka is full: <strong>Pr'Pepet</strong> (also Jake's rec) or grab provisions from a local shop. Either way, keep it lighter than Topli Val lunch — Hiša Franko tomorrow is a 3-hour, €335 marathon.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-card" id="card3">
+      <div class="day-header" onclick="toggleCard('card3')">
+        <div class="day-num">3</div>
+        <div class="day-info">
+          <div class="day-date">Wednesday · May 27</div>
+          <div class="day-title">Hiša Franko → Brda → Bled</div>
+        </div>
+        <div class="sleep-tag">Sleep: Bled area</div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="day-body">
+        <div class="block">
+          <div class="time-col">Morning</div>
+          <div class="content-col">
+            <div class="block-title">Slow morning along the Soča <span class="badge b-jake">jake's rec</span></div>
+            <div class="block-desc">Walk along the river — Jake specifically recommended the Soča itself as a destination, not just the towns. Coffee in Kobarid. Hiša Franko is a farmhouse restaurant — arrive relaxed, not rushed.</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">Lunch</div>
+          <div class="content-col">
+            <div class="block-title">Hiša Franko <span class="badge b-star">★★★ michelin</span> <span class="badge b-must">high priority</span></div>
+            <div class="block-desc">Ana Roš's 3-Michelin-star restaurant. 2026 menu "Footprints" — €335 pp, ~3 hours, beverages extra. Spring menu tells the story of the valley through dishes that evolve constantly with what nature provides each week. Watch the Chef's Table episode beforehand if you haven't.</div>
+            <div class="note">Budget ~3.5 hours including arrival and lingering. Finish around 4–4:30 pm. Wine pairing will add significantly — plan accordingly.</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">~4:30 pm</div>
+          <div class="content-col">
+            <div class="block-title">Brda wine region <span class="badge b-wine">winery</span> <span class="badge b-must">high priority</span></div>
+            <div class="block-desc">~45 min from Kobarid toward Bled. Rolling hills on the Italian border — one of Slovenia's most beautiful landscapes. Three great options for a tasting:</div>
+            <div class="note"><strong>MOVIA</strong> — family since 1820, biodynamic, famous Puro sparkling wine and Rebula whites. <strong>EDI SIMČIČ</strong> (Jake's rec) — another top Brda producer, more boutique feel. <strong>Burja Estate</strong> (Jake's rec) — natural/minimal intervention style, technically Vipava but nearby. Pick one, maybe two. Call ahead — most require reservations.</div>
+            <div class="drive">Kobarid → Brda ~45min · Brda → Bled ~1h</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">Evening</div>
+          <div class="content-col">
+            <div class="block-title">Arrive Bled · Dinner: Domačija Majer'ca <span class="badge b-michelle">michelle's rec</span> <span class="badge b-must">high priority</span></div>
+            <div class="block-desc">Michelle's #1 recommendation — "genuinely one of the best meals, elegant yet homey log cabin, incredibly nice servers." Newish restaurant near Lake Bled, also a guesthouse. Stay here if they have rooms — waking up here after that meal would be a treat.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-card" id="card4">
+      <div class="day-header" onclick="toggleCard('card4')">
+        <div class="day-num">4</div>
+        <div class="day-info">
+          <div class="day-date">Thursday · May 28</div>
+          <div class="day-title">Bled → Bohinj → Ljubljana</div>
+        </div>
+        <div class="sleep-tag">Sleep: Ljubljana</div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="day-body">
+        <div class="block">
+          <div class="time-col">Morning</div>
+          <div class="content-col">
+            <div class="block-title">Lake Bled <span class="badge b-michelle">michelle's rec</span> <span class="badge b-must">high priority</span></div>
+            <div class="block-desc">Walk or cycle the 6 km lake path while it's still quiet. Paddle boat to Bled Island — rent your own rather than a tour boat (Michelle's strong advice: more private, same price roughly). Visit the baroque Church of the Mother of God, ring the wishing bell from 1534. Kremšnita cream cake at a lakeside café is non-negotiable. Velika Ostrojnica hike is an option if you have the energy (Michelle did this).</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">~10:30 am</div>
+          <div class="content-col">
+            <div class="block-title">Bled Castle</div>
+            <div class="block-desc">Panoramic views over the lake and Julian Alps. Medieval castle perched on a sheer cliff — genuinely dramatic. Takes about an hour.</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">~12 pm</div>
+          <div class="content-col">
+            <div class="block-title">Lake Bohinj · Triglav National Park <span class="badge b-jake">jake's rec</span> <span class="badge b-michelle">michelle's rec</span> <span class="badge b-must">high priority</span></div>
+            <div class="block-desc">~30 min from Bled. Less famous, less crowded, more wild. Gateway to Triglav National Park — deep gorges, alpine meadows, crystal-clear rivers. Walk around the lake or hike into the park. Keep eyes open for red deer, chamois, golden eagles.</div>
+            <div class="drive">Bled → Bohinj ~30min</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">~2:30 pm</div>
+          <div class="content-col">
+            <div class="block-title">Drive back to Ljubljana</div>
+            <div class="block-desc">Check in. Afternoon wander — Tivoli Park, Emporium Gallery, or just sit by the river with a coffee at Kavarna Zvezda.</div>
+            <div class="drive">~1.5h</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">Evening</div>
+          <div class="content-col">
+            <div class="block-title">Dinner: Pr'Stričku <span class="badge b-jake">jake's rec</span></div>
+            <div class="block-desc">Jake's Ljubljana pick — 4.7 stars, classic Slovenian gostilna feel. Hearty traditional cooking after several days of fine dining and tasting menus. The right register for the final dinner.</div>
+            <div class="note">Alternative if you want one more upscale dinner: <strong>Grič</strong> (chef Luka Košir's eco-certified duck farm tasting menu in a village outside Ljubljana) or <strong>Gostilna na Gradu</strong> inside Ljubljana Castle.</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">Late</div>
+          <div class="content-col">
+            <div class="block-title">Tozd or :PROJEKT for one last drink</div>
+            <div class="block-desc">Whichever you didn't visit on Day 1. Send-off vibes.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-card" id="card5">
+      <div class="day-header" onclick="toggleCard('card5')">
+        <div class="day-num">5</div>
+        <div class="day-info">
+          <div class="day-date">Friday · May 29</div>
+          <div class="day-title">Odprta Kuhna → Fly 1:30 pm</div>
+        </div>
+        <div class="sleep-tag">Airport by 11:30 am</div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="day-body">
+        <div class="block">
+          <div class="time-col">~9 am</div>
+          <div class="content-col">
+            <div class="block-title">Pekarna Ana coffee + light breakfast</div>
+            <div class="block-desc">One last stop at Ana Roš's bakery. Save real appetite for Odprta Kuhna.</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">~10 am</div>
+          <div class="content-col">
+            <div class="block-title">Odprta Kuhna · open-air food market <span class="badge b-must">high priority</span></div>
+            <div class="block-desc">Friday-only open-air foodie market in the same square as Central Market. Restaurants set up stalls — you shop and eat at the stalls. The perfect Slovenia send-off, capturing the country's food scene in one place.</div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="time-col">11 am</div>
+          <div class="content-col">
+            <div class="block-title">Drive to Ljubljana Airport · return car</div>
+            <div class="block-desc">~20 min from the city center. Flight departs 1:30 pm.</div>
+            <div class="drive">~20min</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="tab-decisions" class="tab-panel">
+
+    <div class="section-card">
+      <div class="section-title">Hiša Franko — book immediately</div>
+      <div class="section-body">
+        <p><strong>Book lunch on Wednesday May 27.</strong> You're already sleeping in the Soča Valley on the night of May 26, so you arrive at the restaurant relaxed, on the right day, in daylight. A farmhouse surrounded by Alpine scenery deserves to be experienced in the afternoon sun, not finished at 10 pm in the dark. The meal ends around 4–4:30 pm, leaving a perfect window to drive through the Brda wine region en route to Bled.</p>
+        <p>At €335 pp with beverages on top, budget roughly €500–550 pp for the full experience with wine pairing. Book at <strong>hisafranko.com</strong> — this is the single most time-sensitive booking of the trip.</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-title">Where to stay each night</div>
+      <div class="section-body">
+        <p><strong>Night 1 (Mon May 25):</strong> Ljubljana city center — anywhere walkable to the old town.</p>
+        <p><strong>Night 2 (Tue May 26):</strong> Kobarid or Bovec area. Keep it simple — you're eating lightly and need to be fresh for Hiša Franko the next day. A farmhouse stay or small hotel in Kobarid works perfectly. <strong>Agriturismo Nema</strong> (Jake's rec, farmstay) is also an option in this region.</p>
+        <p><strong>Night 3 (Wed May 27):</strong> Domačija Majer'ca doubles as a guesthouse — try to book a room there so you're already on-site after dinner. If unavailable, Michelle stayed at Domacija Log v Bohinju (between two mountains, family-owned estate, welcoming host) — also excellent.</p>
+        <p><strong>Night 4 (Thu May 28):</strong> Ljubljana city center again — same area as Night 1, or the same hotel if you want simplicity.</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-title">What to book in advance</div>
+      <div class="section-body">
+        <p><strong>1. Hiša Franko lunch · Wed May 27</strong> — book today, hisafranko.com</p>
+        <p><strong>2. Domačija Majer'ca · dinner + room · Wed May 27</strong> — newish, popular, likely fills up</p>
+        <p><strong>3. Hiša Polonka · dinner · Tue May 26</strong> — Ana Roš's casual sister restaurant, also popular</p>
+        <p><strong>4. Brda winery · Wed May 27 afternoon</strong> — pick one of MOVIA / EDI SIMČIČ / Burja, call ahead, most require reservations</p>
+        <p><strong>5. TaBar · Mon May 25</strong> and <strong>Pr'Stričku · Thu May 28</strong> — worth reservations for three on a weeknight</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="tab-cuts" class="tab-panel">
+
+    <div class="section-card">
+      <div class="section-title">Didn't make the itinerary — and why</div>
+      <div class="section-body" style="margin-bottom: 16px;">These are great recommendations that simply don't fit a western-focused 4-day loop. Most warrant a return trip.</div>
+
+      <div class="cuts-row">
+        <div class="cuts-region">Ljubljana extras</div>
+        <div class="cuts-body"><strong>Strelec, JB Restaurant, Gostilna As, Vigò, Lolita, Pop's Place, Kavarna Zvezda, Museum of Modern Art, MAO, Špajza, Julija, Compa</strong> — great for an extra Ljubljana day. Vigò (pistachio ice cream), Lolita (hot chocolate by the river), and Pop's (burgers) are all easy daytime additions on Day 1 or Day 4 if you have time. JB is listed as temporarily closed — verify before planning around it.</div>
+      </div>
+      <div class="cuts-row">
+        <div class="cuts-region">East Slovenia</div>
+        <div class="cuts-body"><strong>Opok27, Hiša Denk, Terme Olimia, Hotel Laško spa</strong> — the Štajerska region is 2+ hours east, completely opposite direction from this route. Both Opok27 and Hiša Denk are exceptional destination restaurants. Hiša Denk has guest rooms from ~$100/night. This region warrants its own dedicated trip (and would pair well with a future Maribor visit).</div>
+      </div>
+      <div class="cuts-row">
+        <div class="cuts-region">Southwest Karst</div>
+        <div class="cuts-body"><strong>Škocjan Caves, Predjama Castle, Gostilna pri Lojzetu</strong> — the Karst/Vipava Valley area is a full day-circuit on its own heading south from Ljubljana. Gostilna pri Lojzetu (17th-century manor, Tomaž Kavčič's deconstructionist Vipava cuisine) is a genuine destination restaurant. Predjama Castle (world's largest cave castle) is spectacular but adds risk to the May 29 morning flight.</div>
+      </div>
+      <div class="cuts-row">
+        <div class="cuts-region">Big Pasture Plateau</div>
+        <div class="cuts-body"><strong>Velika planina</strong> (Jake's rec) — the alpine shepherd plateau is gorgeous but ~1.5h north of Ljubljana in a different direction from Bled/Bohinj. Adding it to Day 4 would mean cutting Bohinj, which is a worse trade. Lake Bohinj + Triglav give you very similar alpine-meadow energy.</div>
+      </div>
+      <div class="cuts-row">
+        <div class="cuts-region">Maribor</div>
+        <div class="cuts-body"><strong>Maribor</strong> is 1h45 east of Ljubljana — a half-day round-trip with no good slot to fit it without sacrificing something major (Bohinj, Soča valley time, or Ljubljana arrival day). Skipping for this trip; a return visit could pair Maribor with Hiša Denk or Opok27 in Štajerska.</div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer class="footer">
+  Slovenia · May 2026 &nbsp;·&nbsp; Built with care
+</footer>
+
+<script>
+  function showTab(name, el) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    el.classList.add('active');
+  }
+
+  function toggleCard(id) {
+    document.getElementById(id).classList.toggle('collapsed');
+  }
+</script>
+</body>
+</html>
